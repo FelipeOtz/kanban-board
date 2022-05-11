@@ -24,9 +24,10 @@
   font-size: 30px;
   color: #fff;
   user-select: none;
+  font-weight: bold;
 }
 
-.card {
+.card-input {
   width: 100%;
   padding: 10px;
   background: #fff;
