@@ -1,66 +1,70 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
-.board{
-    display: flex;
-    padding: 30px;
-    width: 750px;
-    background: #009578;
-    border-radius: 5px;
+.board {
+  display: flex;
+  padding: 30px;
+  width: 100%;
+  background: #009578;
+  border-radius: 5px;
+  height: 100vh;
 }
 
-.column{
-    flex: 1;
+.column {
+  flex: 1;
+  margin: 0 30px;
 }
 
-.column:not(last-child){
-    margin-right: 30px;
+.column-title {
+  margin-bottom: 20px;
+  font-size: 30px;
+  color: #fff;
+  user-select: none;
 }
 
-.column-title{
-    margin-bottom: 20px;
-    font-size: 30px;
-    color: #fff;
-    user-select: none;
+.card {
+  width: 100%;
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 1s;
+  margin-top: 20px;
+  border: none;
+  font-size: 17px;
 }
 
-.item-input{
-    padding: 10px 15px;
-    background: #fff;
-    border-radius: 5px;
-    cursor: pointer;
+.dropzone {
+  height: 10px;
+  transition: background 0.15s, height 0.15s;
 }
 
-.dropzone{
-    height: 10px;
-    transition: background 0.15s, height 0.15s;
+.dropzone-active {
+  height: 20px;
+  background: rgba(0, 0, 0, 0.25);
 }
 
-.dropzone-active{
-    height: 20px;
-    background: rgba(0, 0, 0, 0.25);
+.add-item {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 20px;
 }
 
-.add-item{
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.1);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.20s;
+.add-item:hover {
+  background: rgba(0, 0, 0, 0.15);
 }
 
-.add-item:hover{
-    background: rgba(0, 0, 0, 0.15);
-}
-
-.add-item:active{
-    background: rgba(0, 0, 0, 0.2);
+.add-item:active {
+  background: rgba(0, 0, 0, 0.2);
 }
