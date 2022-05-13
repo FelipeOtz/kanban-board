@@ -1,22 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,600;0,700;0,900;1,400;1,800&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .board {
+  background: rgb(0, 154, 130);
+  background: linear-gradient(90deg, rgb(1, 209, 178) 0%, rgb(67, 0, 130) 100%);
   display: flex;
-  padding: 30px;
+  padding: 150px;
   width: 100%;
-  background: #009578;
   border-radius: 5px;
   height: 100vh;
 }
 
 .column {
   flex: 1;
-  margin: 0 30px;
+  margin: 0 50px;
 }
 
 .column-title {
@@ -25,6 +28,7 @@
   color: #fff;
   user-select: none;
   font-weight: bold;
+  text-align: center;
 }
 
 .card-input {
@@ -33,19 +37,24 @@
   font-size: 17px;
   outline: none;
   width: 100%;
+  font-weight: 600;
 }
 
 .card-icon {
-  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #009578;
+  background: rgba(0, 0, 0, 0.1);
   padding: 3px;
   border-radius: 5px;
   height: 40px;
   width: 40px;
   align-self: flex-end;
   cursor: pointer;
+  position: absolute;
+  right: -60px;
+  transition: opacity 0.25s;
+  opacity: 0;
+  display: flex;
 }
 
 .card-icon img {
@@ -63,6 +72,11 @@
   transition: background 1s;
   margin-top: 20px;
   align-items: center;
+  position: relative;
+}
+
+.active {
+  opacity: 1;
 }
 
 .dropzone {
@@ -70,15 +84,11 @@
   transition: background 0.15s, height 0.15s;
 }
 
-.dropzone-active {
-  height: 20px;
-  background: rgba(0, 0, 0, 0.25);
-}
-
 .add-item {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
+  font-weight: 600;
   color: #fff;
   background: rgba(0, 0, 0, 0.1);
   border: none;
@@ -94,4 +104,16 @@
 
 .add-item:active {
   background: rgba(0, 0, 0, 0.2);
+}
+
+.dragging {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.items {
+  min-height: 30vh;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 10px;
 }
