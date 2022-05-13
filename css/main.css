@@ -14,7 +14,7 @@
   padding: 150px;
   width: 100%;
   border-radius: 5px;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .column {
@@ -109,6 +109,7 @@
 .dragging {
   cursor: pointer;
   opacity: 0.5;
+  border: 2px dashed rgba(0, 0, 0, 0.5);
 }
 
 .items {

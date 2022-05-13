@@ -1,9 +1,10 @@
 const addButton = document.querySelectorAll(".add-item");
 const columns = document.querySelectorAll(".items");
 const icons = document.querySelectorAll(".icon");
-let cards = document.querySelectorAll(".card");
+
 const board = document.querySelector(".board");
 const cardIcon = document.querySelectorAll("card-icon");
+let tasks = [];
 
 function addCard(index) {
   const card = document.createElement("div");
@@ -21,7 +22,6 @@ function addCard(index) {
   card.appendChild(cardInput);
   card.appendChild(cardIcon);
   columns[index].appendChild(card);
-  cards = document.querySelectorAll(".card");
   handlecard();
 }
 
@@ -32,6 +32,7 @@ addButton.forEach((btn, index) => {
 });
 
 function handlecard() {
+  const cards = document.querySelectorAll(".card");
   cards.forEach((card, index) => {
     card.addEventListener("click", (e) => {
       if (e.target.classList.contains("card-icon")) {
@@ -40,16 +41,14 @@ function handlecard() {
     });
 
     card.addEventListener("dragstart", (e) => {
-      console.log(card);
       card.classList.add("dragging");
     });
 
     card.addEventListener("dragend", (e) => {
-      console.log(card);
       card.classList.remove("dragging");
     });
 
-    card.addEventListener("mouseover", async (e) => {
+    card.addEventListener("mouseover", (e) => {
       const icon = card.querySelector(".card-icon");
       icon.classList.add("active");
       setTimeout(() => {
@@ -59,12 +58,29 @@ function handlecard() {
   });
 }
 
-columns.forEach((column) => {
+columns.forEach((column, index) => {
   column.addEventListener("dragover", (e) => {
     e.preventDefault();
     const draggingElement = document.querySelector(".dragging");
     column.appendChild(draggingElement);
   });
+
+  column.addEventListener("keyup", (e) => {
+    if (e.target.classList.contains("card-input")) {
+      const input = e.target;
+      updateItems();
+      console.log(tasks);
+    }
+  });
 });
+
+function updateItems() {
+  const items = document.querySelectorAll("card-input");
+
+  tasks.push({
+    column: 0,
+    content: 4,
+  });
+}
 
 handlecard();
