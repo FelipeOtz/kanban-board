@@ -69,18 +69,21 @@ columns.forEach((column, index) => {
     if (e.target.classList.contains("card-input")) {
       const input = e.target;
       updateItems();
-      console.log(tasks);
+      console.log(input);
     }
   });
 });
 
 function updateItems() {
-  const items = document.querySelectorAll("card-input");
-
-  tasks.push({
-    column: 0,
-    content: 4,
+  const items = document.querySelectorAll(".card-input");
+  items.forEach((item) => {
+    console.log(items);
   });
+
+  /* tasks.push({
+      column: 3,
+      content: 4,
+    }); */
 }
 
 handlecard();
