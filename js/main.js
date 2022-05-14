@@ -4,30 +4,30 @@ const icons = document.querySelectorAll(".icon");
 
 const board = document.querySelector(".board");
 const cardIcon = document.querySelectorAll("card-icon");
-let tasks = [];
+let tasks = localStorage ? JSON.parse(localStorage.getItem("cards")) : [];
 
-function addCard(index) {
+if (tasks != null) {
+  tasks.forEach((task) => {
+    addCard(task.column, task.content);
+  });
+}
+
+function addCard(index, content) {
   const card = document.createElement("div");
-  const cardInput = document.createElement("input");
-  const cardIcon = document.createElement("div");
-  const imgIcon = document.createElement("img");
-
-  cardInput.classList.add("card-input");
-  cardInput.setAttribute("Type", "text");
-  cardIcon.classList.add("card-icon");
-  imgIcon.src = "icons/trash.png";
-  cardIcon.appendChild(imgIcon);
   card.classList.add("card");
   card.setAttribute("draggable", "true");
-  card.appendChild(cardInput);
-  card.appendChild(cardIcon);
+  card.innerHTML = `
+            <input type="text" class="card-input" value="${content}"/>
+            <div class="card-icon"><img src="icons/trash.png" alt="" /></div>
+          `;
   columns[index].appendChild(card);
   handlecard();
 }
 
 addButton.forEach((btn, index) => {
   btn.addEventListener("click", () => {
-    addCard(index);
+    addCard(index, "");
+    updateItems();
   });
 });
 
@@ -37,6 +37,7 @@ function handlecard() {
     card.addEventListener("click", (e) => {
       if (e.target.classList.contains("card-icon")) {
         card.remove();
+        updateItems();
       }
     });
 
@@ -46,6 +47,7 @@ function handlecard() {
 
     card.addEventListener("dragend", (e) => {
       card.classList.remove("dragging");
+      updateItems();
     });
 
     card.addEventListener("mouseover", (e) => {
@@ -63,27 +65,39 @@ columns.forEach((column, index) => {
     e.preventDefault();
     const draggingElement = document.querySelector(".dragging");
     column.appendChild(draggingElement);
+    updateItems();
   });
 
   column.addEventListener("keyup", (e) => {
     if (e.target.classList.contains("card-input")) {
-      const input = e.target;
       updateItems();
-      console.log(input);
     }
   });
 });
 
 function updateItems() {
+  tasks = [];
   const items = document.querySelectorAll(".card-input");
+  let columnIndex = 0;
   items.forEach((item) => {
-    console.log(items);
+    switch (item.parentElement.parentElement.id) {
+      case "nao-iniciadas":
+        columnIndex = 0;
+        break;
+      case "em-andamento":
+        columnIndex = 1;
+        break;
+      case "concluidas":
+        columnIndex = 2;
+        break;
+    }
+    tasks.push({
+      column: columnIndex,
+      content: item.value,
+    });
   });
 
-  /* tasks.push({
-      column: 3,
-      content: 4,
-    }); */
+  localStorage.setItem("cards", JSON.stringify(tasks));
 }
-
+updateItems();
 handlecard();
