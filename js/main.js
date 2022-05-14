@@ -9,6 +9,7 @@ let tasks = localStorage ? JSON.parse(localStorage.getItem("cards")) : [];
 if (tasks != null) {
   tasks.forEach((task) => {
     addCard(task.column, task.content);
+    updateItems();
   });
 }
 
