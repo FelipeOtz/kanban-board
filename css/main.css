@@ -11,11 +11,9 @@
   background: rgb(0, 154, 130);
   background: linear-gradient(90deg, rgb(1, 209, 178) 0%, rgb(67, 0, 130) 100%);
   display: flex;
-  padding: 150px;
-  width: 100%;
-  border-radius: 5px;
+  padding: 90px;
+  width: 100vw;
   min-height: 100vh;
-  min-width: 1315px;
 }
 
 .column {
@@ -118,4 +116,36 @@
   background: rgba(0, 0, 0, 0.1);
   padding: 10px;
   border-radius: 10px;
+}
+
+@media (max-width: 963px) {
+  .board {
+    padding: 90px 50px;
+    display: block;
+  }
+
+  .column {
+    margin-bottom: 70px;
+  }
+}
+
+@media (max-width: 663px) {
+  .board {
+    padding: 90px 0px;
+    display: block;
+  }
+}
+@media (max-width: 1025px) {
+  .board {
+    padding: 90px 50px;
+  }
+  .column-title {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .column {
+    margin: 0 30px;
+  }
 }
