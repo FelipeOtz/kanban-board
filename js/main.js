@@ -17,6 +17,7 @@ function addCard(index, content) {
   const card = document.createElement("div");
   card.classList.add("card");
   card.setAttribute("draggable", "true");
+
   card.innerHTML = `
             <input type="text" class="card-input" value="${content}"/>
             <div class="card-icon"><img src="icons/trash.png" alt="" /></div>
@@ -27,7 +28,7 @@ function addCard(index, content) {
 
 addButton.forEach((btn, index) => {
   btn.addEventListener("click", () => {
-    addCard(index, "");
+    addCard(index, "Digite uma tarefa aqui");
     updateItems();
   });
 });
@@ -92,6 +93,7 @@ function updateItems() {
         columnIndex = 2;
         break;
     }
+
     tasks.push({
       column: columnIndex,
       content: item.value,
